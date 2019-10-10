@@ -21,17 +21,12 @@ void printcar(void* ep){
 }
 
 int main(){
-  printf("Testing all function in one long test file\n");
+  printf("Testing searching and removing items from hashtable\n");
   printf("opening hashtable with size 500\n");
   hashtable_t* hash=hopen(500);
   if (hash == NULL){
     printf("NULL hashtable");
-  }
-  printf("trying to remove from empty hashtable\n");
-  char* removekey="key";
-  car_t* removefromempty=hremove(hash,&searchfn,removekey,strlen(removekey));
-  if (removefromempty == NULL){
-    printf("got back NULL,hashtable is empty\n");
+    exit(EXIT_FAILURE);
   }
   printf("Putting car data structure in hashtable with key as it's plate\n");
   char* two="2Z9";
@@ -57,6 +52,9 @@ int main(){
   car_t* carremove=hremove(hash,&searchfn,one,strlen(one));
   printf("Printing plate of car we got from remove\n");
   printf("Plate=%s\n",carremove->plate);
+  if (strcmp(one,carremove->plate)!=0){
+    exit(EXIT_FAILURE);
+  }
   printf("Applying function to print plates of all cars in list\n");
   happly(hash,&printcar);
   printf("Removing car with plate 2Z9\n");
@@ -64,7 +62,11 @@ int main(){
   car_t* carremove2=hremove(hash,&searchfn,two,strlen(two));
   printf("Printing plate of car we got from remove\n");
   printf("Plate=%s\n",carremove2->plate);
+  if (strcmp(two,carremove2->plate)!=0){
+    exit(EXIT_FAILURE);
+  }
   printf("Applying function to print plates of all cars in list\n");
   happly(hash,&printcar);
   hclose(hash);
+  exit(EXIT_SUCCESS);
 }

@@ -1,6 +1,8 @@
 #include "list.h"
 #include <stdint.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 int main(){
   printf("removing from empty list\n");
@@ -22,13 +24,22 @@ int main(){
   printf("getting from end of list car-33L\n");
   car_t* carback=lremove("33L");
   printf("Got car %s\n",carback->plate);
+  if (strcmp(carback->plate,"33L")!= 0){
+    exit(EXIT_FAILURE);
+  }
   printf("getting from front of list car-9XL\n");
   car_t* carback2=lremove("9XL");
   printf("Got car %s\n",carback2->plate);
+  if (strcmp(carback2->plate,"9XL")!= 0){
+    exit(EXIT_FAILURE);
+  }
   printf("getting from middle of list car-2XL\n");
   car_t* carback3=lremove("2XL");
   printf("Got car %s\n",carback3->plate);
-  
+  if (strcmp(carback3->plate,"2XL")!= 0){
+    exit(EXIT_FAILURE);
+  }
+  exit(EXIT_SUCCESS);
   
 
 }

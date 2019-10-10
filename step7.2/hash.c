@@ -5,8 +5,8 @@
 #include <stdint.h>
 #include "string.h"
 #include <stdlib.h>
-#include "hash.h"
-#include "../step6/queue.h"
+#include <hash.h>
+#include <queue.h>
 
 typedef struct hashtable{
   queue_t **hashtable;

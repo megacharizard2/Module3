@@ -1,7 +1,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include "queue.h"
+#include <queue.h>
 
 typedef struct queuenode{
   void* item;
