@@ -110,6 +110,9 @@ void* qremove(queue_t *qp, bool (*searchfn)(void* elementp,const void* keyp),con
         queuenode_t* currnode=node;
         void* item=node->item;
         prev->next=currnode->next;
+        if (currnode == queue->tail){
+          queue->tail=prev;
+        }
         free(currnode);
         return item;
       }
@@ -135,8 +138,16 @@ void qconcat(queue_t *q1p, queue_t *q2p){
   if (q1p != NULL && q2p != NULL){
     queue_s* queue1=(queue_s*)q1p;
     queue_s* queue2=(queue_s*)q2p;
-    queue1->tail->next=queue2->head;
-    queue1->tail=queue2->tail;
+    if (queue2->tail != NULL && queue2->head != NULL){
+      if (queue1->tail != NULL && queue1->head != NULL){
+        queue1->tail->next=queue2->head;
+        queue1->tail=queue2->tail;
+      }
+      if (queue1->tail == NULL && queue1->head ==NULL){
+        queue1->head=queue2->head;
+        queue1->tail=queue2->tail;
+      }
+    }
     free(queue2);
   }
 }

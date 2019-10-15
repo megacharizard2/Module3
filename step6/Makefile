@@ -4,7 +4,7 @@ MAKE = make
 
 .PHONY: all clean
 
-all: queuetest queuetest2 queuetest3 queuetest4 queuetest5 queuetest6 queuetest7 queuetest8 queuetest9 queuetest10 queuetest11
+all: queuetest queuetest2 queuetest3 queuetest4 queuetest5 queuetest6 queuetest7 queuetest8 queuetest9 queuetest10 queuetest11 queuetest12
 
 queuo.o: queue.c queue.h
 	gcc $(CFALGS) -c queue.c
@@ -19,6 +19,7 @@ queuetest8: queuetest8.o queue.o
 queuetest9: queuetest9.o queue.o
 queuetest10: queuetest10.o queue.o
 queuetest11: queuetest11.o queue.o
+queuetest12: queuetest12.o queue.o
 
 %.o: %.c %.h 
 	gcc $(CFLAGS) -c $< 
